@@ -72,7 +72,7 @@ def create_nfl_scatter_plot(csv_file, x_col, y_col, secondary_csv=None, join_key
         logo_key = row['Tm'] if 'Tm' in plot_df.columns else label_text
         logo_path = f'data/logos/{logo_key}.png'
         
-        img_obj = getImage(logo_path, zoom_size=38)
+        img_obj = getImage(logo_path, zoom_size=55)
         if img_obj:
             ab = AnnotationBbox(img_obj, (x, y), frameon=False, zorder=3)
             ax.add_artist(ab)
@@ -102,11 +102,11 @@ def create_nfl_scatter_plot(csv_file, x_col, y_col, secondary_csv=None, join_key
     ax.axhline(mean_y, color=MEAN_LINE_COLOR, linestyle='--', lw=1.2, alpha=0.4, zorder=1)
 
     # Axis Labels and Title
-    ax.set_xlabel(final_x_label, fontsize=12, fontweight='bold', color=AXIS_COLOR, labelpad=12)
-    ax.set_ylabel(final_y_label, fontsize=12, fontweight='bold', color=AXIS_COLOR, labelpad=12)
+    ax.set_xlabel(final_x_label, fontsize=20, fontweight='bold', color=AXIS_COLOR, labelpad=12)
+    ax.set_ylabel(final_y_label, fontsize=20, fontweight='bold', color=AXIS_COLOR, labelpad=12)
     plt.title(title, fontsize=20, fontweight='black', loc='left', pad=35)
-    ax.text(0, 1.025, 'NFL Data Analysis | Reusable Grapher', transform=ax.transAxes, 
-            fontsize=11, color='#777777', ha='left')
+    # ax.text(0, 1.025, 'NFL Data Analysis | Reusable Grapher', transform=ax.transAxes, 
+    #         fontsize=11, color='#777777', ha='left')
 
     # Percentage Formatting
     if plot_df[x_col].max() <= 1:
